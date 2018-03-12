@@ -1,0 +1,21 @@
+73413:C 12 Mar 11:43:14.455 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+73413:C 12 Mar 11:43:14.456 # Redis version=4.0.8, bits=64, commit=00000000, modified=0, pid=73413, just started
+73413:C 12 Mar 11:43:14.456 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+73413:M 12 Mar 11:43:14.457 * Increased maximum number of open files to 10032 (it was originally set to 4864).
+73413:M 12 Mar 11:43:14.474 * Running mode=standalone, port=6379.
+73413:M 12 Mar 11:43:14.474 # Server initialized
+73413:M 12 Mar 11:43:14.475 * Ready to accept connections
+73493:C 12 Mar 11:47:38.336 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+73493:C 12 Mar 11:47:38.337 # Redis version=4.0.8, bits=64, commit=00000000, modified=0, pid=73493, just started
+73493:C 12 Mar 11:47:38.337 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+73493:M 12 Mar 11:47:38.339 * Increased maximum number of open files to 10032 (it was originally set to 4864).
+73493:M 12 Mar 11:47:38.340 # Creating Server TCP listening socket *:6379: bind: Address already in use
+73496:C 12 Mar 11:47:43.331 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+73496:C 12 Mar 11:47:43.332 # Redis version=4.0.8, bits=64, commit=00000000, modified=0, pid=73496, just started
+73496:C 12 Mar 11:47:43.332 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+73496:M 12 Mar 11:47:43.333 * Increased maximum number of open files to 10032 (it was originally set to 4864).
+73496:M 12 Mar 11:47:43.334 # Creating Server TCP listening socket *:6379: bind: Address already in use
+73413:M 12 Mar 11:48:58.520 # User requested shutdown...
+73413:M 12 Mar 11:48:58.520 * Saving the final RDB snapshot before exiting.
+73413:M 12 Mar 11:48:58.521 * DB saved on disk
+73413:M 12 Mar 11:48:58.521 # Redis is now ready to exit, bye bye...

@@ -1,0 +1,81 @@
+<ol class="breadcrumb">
+    <li><%= link_to 'Blogposts' %></li>
+    <li class="active"><%= @blog.title %></li>
+</ol>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="calm-welcome text-center">
+                <img src="<%= asset_path( 'calm-welcome.png' ) %>" />
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Text</th>
+                    <th>Image</th>
+
+                </tr>
+            </thead>
+                <tr>
+                    <td><%= @blog.title %></td>
+                    <td><%= @blog.text %></td>
+                    <td><%= image_tag(@blog.image_url(:thumb), alt: 'Image') if @blog.image? %></td>
+                </tr>
+        </table>
+
+    <div class="col-md-12 text-center">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th class="text-center">Commenter</th>
+                        <th class="text-center">Comment</th>
+                        <th class="text-center">Action</th>
+                    </tr>
+                </thead>
+
+                <% @blog.comments.each do |comment| %>
+
+                <tbody>
+                    <tr>
+                        <td><%=comment.commenter %></td>
+                        <td><%=comment.body %></td>
+                        <td><%= link_to 'Destroy', [comment.blog, comment], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                    </tr>
+                </tbody>
+
+                <% end %>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12 text-center">
+       <%= form_for [@blog, @comment] do |form| %>
+            <div class="form-group text-center">
+                <p>
+                    <%= form.label :commenter %><br>
+                    <%= form.text_field :commenter %>
+                </p>
+                <p>
+                    <%= form.label :body %><br>
+                    <%= form.text_area :body %>
+                </p>
+                <p>
+                    <%= form.submit class: 'btn btn-primary', data: { disable_with: 'Please wait...', confirm: 'Are you sure?' } %>
+                </p>
+            </div>
+        <% end %>
+    </div>
+    <%= link_to 'Edit', edit_blog_path(@blog) %>
+    <%= link_to 'Back', blogs_path %>
+</div>
+

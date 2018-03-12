@@ -1,0 +1,58 @@
+// Place all the styles related to the blogs controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.welcome-image img {
+
+     width: 500px;
+     length: 200px;
+ }
+
+ .calm-welcome img {
+     width: 382px;
+     length: 100px;
+ }
+
+.table-responsive {
+
+    margin-top: 85px;
+}
+
+div.table-responsive > table > tbody tr td {
+
+    padding: 30px;
+}
+
+.linktonewblog {
+
+    text-align: center;
+}
+
+
+div.table-responsive > table > thead > tr > th {
+
+    text-align: center;
+}
+
+div.table-responsive > table > thead > tr > th > img{
+
+    text-align: center;
+}
+
+
+.linktonewblog {
+
+    margin-top: 100px;
+}
+
+ div.table-responsive > table > tbody > tr > td:nth-child(2) {
+
+     text-align: center;
+ }
+
+
+
+
+ body > div > div:nth-child(2) > div > div > div.table-responsive > table > tbody > tr > td:nth-child(1) {
+
+     text-align: center;
+ }

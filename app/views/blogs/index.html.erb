@@ -1,0 +1,39 @@
+
+<ol class="breadcrumb">
+    <li class="active">Blogposts</li>
+</ol>
+
+<div class="welcome-image text-center">
+    <img src="<%= asset_path( 'welcome_burned.png' ) %>" />
+</div>
+
+<div class="table-responsive">
+    <table class="table table-hover text-center">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Text</th>
+                <th>Picture</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <% @blogs.each do |blog| %>
+            <tr>
+                <td><%= blog.title %></td>
+                <td><%= blog.text %></td>
+                <td><%= image_tag(blog.image_url(:thumb), alt: 'Image') if blog.image? %></td>
+                <td><%= link_to 'Show', blog_path(blog) %>
+                <%= link_to 'Edit', edit_blog_path(blog) %>
+                <%= link_to 'Delete', blog_path(blog), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+        <% end %>
+    </table>
+
+
+    <div class="linktonewblog">
+        <%= link_to 'New Blog', new_blog_path, class: 'btn btn-success' %>
+    </div>
+
+</div>
+
+<%= will_paginate @blogs %>
