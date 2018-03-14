@@ -4,4 +4,6 @@
     <li class="active">Edit</li>
 </ol>
 
-<%= render 'form' %>
+<%= link_to "Make Active", :controller => "blogs", :action => "active" %>
+
+<%= render 'blogs/backend/form' %>

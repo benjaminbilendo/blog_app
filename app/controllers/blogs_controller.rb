@@ -1,27 +1,34 @@
 class BlogsController < ApplicationController
+    protect_from_forgery
     before_action :authenticate_user!
-    before_action :find_blog, only: [:show, :edit, :update, :destroy]
+    before_action :find_blog, only: [:show, :edit, :update, :destroy, :active]
 
     def index
         @blogs = Blog.all.paginate(page: params[:page])
+        render template: "/blogs/frontend/index"
     end
 
     def show
        @comment = @blog.comments.new
+       render template: "/blogs/frontend/show"
     end
 
     def create
         @blog = Blog.new(blog_params)
         if @blog.save
-            UserMailer.welcome_email.deliver
             redirect_to @blog, notice: "saved"
         else
             render "new"
         end
     end
 
+    def edit
+        render template: "/blogs/backend/edit"
+    end
+
     def new
         @blog = Blog.new
+        render template: "/blogs/backend/new"
     end
 
     def update
@@ -36,6 +43,13 @@ class BlogsController < ApplicationController
         @blog.destroy
         flash[:notice] = "Delete success"
         redirect_to blogs_path
+    end
+
+    def active
+        @blog.activate
+        @blog.save
+        Blog.send_subscription_emails
+        render template: "/blogs/backend/active"
     end
 
     private

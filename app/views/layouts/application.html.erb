@@ -7,6 +7,8 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.css">
   </head>
 
     <body>
@@ -39,9 +41,11 @@
                        </li>
                    </ul>
                    <form id="signin" class="navbar-form navbar-right" role="form">
+                    <% if user_signed_in? %>
                        <%= render 'layouts/devise' %>
-                       <button type="submit" class="btn btn-primary"><a href="/users/sign_in"></a>Sign In</button>
+                    <% else %>
                        <button type="submit" class="btn btn-primary"><a href="/users/sign_up"></a>Sign Up</button>
+                    <% end %>
                    </form>
                </div>
            </div>
