@@ -44,7 +44,7 @@
                     <% if user_signed_in? %>
                        <%= render 'layouts/devise' %>
                     <% else %>
-                       <button type="submit" class="btn btn-primary"><a href="/users/sign_up"></a>Sign Up</button>
+                       <%= link_to('Sign Up', new_user_registration_path, class: "btn btn-primary")  %>
                     <% end %>
                    </form>
                </div>

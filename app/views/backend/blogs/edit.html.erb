@@ -1,0 +1,7 @@
+<ol class="breadcrumb">
+    <li><%= link_to 'Blogposts' %></li>
+    <li><%= link_to @blog.title, backend_blog_path(@blog) %></li>
+    <li class="active">Edit</li>
+</ol>
+
+<%= render 'form' %>

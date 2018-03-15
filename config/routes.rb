@@ -2,21 +2,26 @@ require "resque_web"
 
 Rails.application.routes.draw do
     mount ResqueWeb::Engine => "/resque_web"
-    root to: "blogs#index"
+
     devise_for :users
 
-# Front End
-
-    get '/blog/subscribe', to: 'subscriptions#new'
-    post '/blog/subscribe', to: 'subscriptions#create'
-    get '/home', to: 'blogs#index'
-    get '/home/blogs/:id', to: 'blogs#show'
-
-# Back End
-
-    resources :blogs do
-        resources :comments, only: [:create]
+    namespace :backend do
+        get 'comments', to: 'comments#index'
+        resources :blogs, except: [:show] do
+            resources :comments, except: [:create, :new, :show, :index]
+        end
     end
-end
 
+    namespace :frontend do
+        resources :blogs, only: [:index, :show] do
+            resources :comments, only: [:create, :new, :show, :index]
+        end
+    end
+
+    root to: "frontend/blogs#index"
+    get '/subscribe', to: 'frontend/subscriptions#new'
+    post '/subscribe', to: 'frontend/subscriptions#create'
+    post '/:id/create_comment', to: 'frontend/comments#create', as: 'createcomment'
+
+end
 

@@ -1,0 +1,35 @@
+<div class="panel panel-success">
+     <div class="panel-heading text-center">Backend Comments Index</div>
+     <div class="panel-body">
+         <div class="table-responsive">
+             <table class="table table-hover text-center">
+                 <thead>
+                     <tr>
+                         <th>Commenter</th>
+                         <th>Comment</th>
+                         <th>Actions</th>
+                     </tr>
+                 </thead>
+                 <% @comments.each do |comment| %>
+                     <tr>
+                         <td><%= comment.commenter %></td>
+                         <td><%= comment.body.truncate(10) %></td>
+                         <td>
+                             <%= link_to 'Edit', edit_backend_blog_comment_path(comment.blog, comment), class: 'btn btn-primary' %>
+                             <%= link_to 'Delete', backend_blog_comment_path(comment.blog, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+                         </td>
+
+                     </tr>
+                 <% end %>
+             </table>
+         </div>
+     </div>
+</div>
+
+
+<ol class="breadcrumb">
+    <li class="active">Comments</li>
+</ol>
+
+
+<%= will_paginate @comments %>

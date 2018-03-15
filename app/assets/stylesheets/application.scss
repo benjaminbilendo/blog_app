@@ -14,7 +14,9 @@
  *= require_self
  */
 
- @import "bootstrap";
+ @import 'bootstrap';
+ @import 'devise_bootstrap_views';
+
 
  .breadcrumb {
      background-color: #fdfdfd;

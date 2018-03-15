@@ -1,0 +1,56 @@
+<ol class="breadcrumb">
+    <li><%= link_to 'Blogposts', backend_blogs_path %></li>
+    <li class="active"><%= @blog.title %></li>
+</ol>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="calm-welcome text-center">
+                <img src="<%= asset_path( 'calm-welcome.png' ) %>" />
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-body text-center"><%= image_tag(@blog.image_url(:thumb), alt: 'Image') if @blog.image? %>
+                <h4>Your Story</h4>
+            </div>
+        </div>
+        <div class="main-text-box">
+             <p><%= @blog.text %></p>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12 text-center">
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th class="text-center">Commenter</th>
+                    <th class="text-center">Comment</th>
+                    <th class="text-center">Action</th>
+                </tr>
+            </thead>
+
+            <% @blog.comments.each do |comment| %>
+
+            <tbody>
+                <tr>
+                    <td><%=comment.commenter %></td>
+                    <td><%=comment.body %></td>
+                </tr>
+            </tbody>
+
+            <% end %>
+        </table>
+    </div>
+</div>
+
+    <%= link_to 'Edit', edit_backend_blog_path(@blog) %>
+    <%= link_to 'Back', backend_blogs_path %>
+</div>
+

@@ -41,6 +41,8 @@ group :development, :test, :production do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'devise-bootstrap-views'
+  gem 'cancancan', '~> 2.0'
+  gem 'rolify'
   gem 'devise'
   gem 'resque'
   gem 'redis'

@@ -1,9 +1,0 @@
-<ol class="breadcrumb">
-    <li><%= link_to 'Blogposts' %></li>
-    <li><%= link_to @blog.title, blog_path(@blog) %></li>
-    <li class="active">Edit</li>
-</ol>
-
-<%= link_to "Make Active", :controller => "blogs", :action => "active" %>
-
-<%= render 'blogs/backend/form' %>

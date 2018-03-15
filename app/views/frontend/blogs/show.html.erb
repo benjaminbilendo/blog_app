@@ -1,0 +1,62 @@
+<ol class="breadcrumb">
+    <li><%= link_to 'Home', root_url %></li>
+    <li class="active"><%= @blog.title %></li>
+</ol>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="calm-welcome text-center">
+            <img src="<%= asset_path( 'calm-welcome.png' ) %>" />
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-body text-center"><%= image_tag(@blog.image_url(:thumb), alt: 'Image') if @blog.image? %>
+                <h4>Your Story</h4>
+            </div>
+        </div>
+        <div class="main-text-box">
+             <p><%= @blog.text %></p>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-12 text-center">
+       <%= form_for [:frontend, @blog, @comment] do |form| %>
+            <div class="form-group text-center">
+                <p>
+                    <%= form.label :commenter %><br>
+                    <%= form.text_field :commenter %>
+                </p>
+                <p>
+                    <%= form.label :body %><br>
+                    <%= form.text_area :body %>
+                </p>
+                <p>
+                    <%= form.submit class: 'btn btn-primary', data: { disable_with: 'Please wait...', confirm: 'Are you sure?' } %>
+                </p>
+            </div>
+        <% end %>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <h3 class="text-center">Comments</h3>
+        <% @blog.comments.each do |comment| %>
+            <% next if comment.new_record? %>
+            <div>
+                <small>On <%= comment.created_at.strftime("%d.%m.%Y") %></small> <strong><%= comment.commenter %></strong> wrote:<br>
+
+                <%= comment.body %>
+            </div>
+        <% end %>
+    </div>
+</div>
+
