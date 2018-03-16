@@ -1,5 +1,7 @@
 class Subscription < ApplicationRecord
-    validates :first_name, length: { minimum: 5 }
-    validates :last_name, length: { minimum: 10 }
-    validates_format_of :email, with: Devise::email_regexp
+    validates :email, presence: true
+
+    def name
+        "#{first_name} #{last_name}"
+    end
 end

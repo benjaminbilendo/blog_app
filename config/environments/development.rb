@@ -64,7 +64,7 @@ Rails.application.configure do
   port:                 587,
   domain:               'example.com',
   user_name:            'ben@sunderland.eu.com',
-  password:             ENV['GMAIL_PASSWORD'],
+  password:             'chesterful',
   authentication:       'plain',
   enable_starttls_auto: true  }
   # Use an evented file watcher to asynchronously detect changes in source code,

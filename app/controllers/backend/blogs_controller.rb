@@ -1,8 +1,5 @@
 module Backend
     class BlogsController < ApplicationController
-        protect_from_forgery
-        load_and_authorize_resource
-        before_action :authenticate_user!
         before_action :find_blog, only: [:show, :edit, :update, :destroy, :active]
 
         def index
@@ -12,7 +9,7 @@ module Backend
         def create
             @blog = Blog.new(blog_params)
             if @blog.save
-                redirect_to backend_blog_path(@blog), notice: "Success!"
+                redirect_to backend_blogs_path, notice: "Success!"
             else
                 render "new"
             end
@@ -39,6 +36,11 @@ module Backend
             redirect_to backend_blogs_path
         end
 
+        def change_size
+            Resque.enqueue(ImagesWorker)
+            redirect_to backend_blogs_path, notice: "worker enqueued"
+        end
+
         private
 
         def find_blog
@@ -46,7 +48,7 @@ module Backend
         end
 
         def blog_params
-            params.require(:blog).permit(:title, :text, :image, :image_cache, :active)
+            params.require(:blog).permit(:title, :text, :image, :image_cache, :active, :notified, :wordcount, :whitespacecount, :charactercount)
         end
     end
 end

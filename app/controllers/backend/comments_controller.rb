@@ -1,6 +1,5 @@
 module Backend
     class CommentsController < ApplicationController
-        before_action :authenticate_user!
         before_action :find_blog, except: [:index]
         before_action :find_comment, except: [:index]
 

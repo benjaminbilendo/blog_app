@@ -9,6 +9,7 @@
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   </head>
 
     <body>
@@ -26,27 +27,15 @@
                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                    <ul class="nav navbar-nav">
                        <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
-                       <li><a href="#">About</a></li>
                        <li class="dropdown">
-                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Resources <span class="caret"></span></a>
-                           <ul class="dropdown-menu" role="menu">
-                               <li><a href="#">Action</a></li>
-                               <li><a href="#">Another action</a></li>
-                               <li><a href="#">Something else here</a></li>
-                               <li class="divider"></li>
-                               <li><a href="#">Separated link</a></li>
-                               <li class="divider"></li>
-                               <li><a href="#">One more separated link</a></li>
-                           </ul>
+                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Backend<span class="caret"></span></a>
+                         <ul class="dropdown-menu">
+                           <li><%= link_to "Blogs", backend_blogs_path %></li>
+                           <li><%= link_to "Comments", backend_comments_path %></li>
+                           <li><%= link_to "Subscriptions", backend_blogs_path %></li>
+                         </ul>
                        </li>
                    </ul>
-                   <form id="signin" class="navbar-form navbar-right" role="form">
-                    <% if user_signed_in? %>
-                       <%= render 'layouts/devise' %>
-                    <% else %>
-                       <%= link_to('Sign Up', new_user_registration_path, class: "btn btn-primary")  %>
-                    <% end %>
-                   </form>
                </div>
            </div>
        </nav>

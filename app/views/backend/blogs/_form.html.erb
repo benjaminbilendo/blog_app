@@ -14,15 +14,19 @@
         </div>
     <% end %>
 
-
-
     <div class="form-group">
         <%= form.label :title %><br>
         <%= form.text_field :title, class: 'form-control' %>
     </div>
+
     <div class="form-group">
         <%= form.label :active %><br>
         <%= form.check_box :active, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+        <%= form.label :notified %><br>
+        <%= form.check_box :notified, class: 'form-control' %>
     </div>
 
     <div class="form-group">
@@ -30,12 +34,11 @@
         <%= form.text_area :text, class: 'form-control' %>
     </div>
 
-
     <div class="form-group">
         <%= form.label :image %><br>
         <%= form.file_field :image, class: 'form-control' %>
         <%= form.hidden_field :image_cache %>
-        <%= image_tag(@blog.image_url(:thumb), alt: 'Image') if @blog.image? %>
+        <%= image_tag(@blog.image_url(:medium), alt: 'Image') if @blog.image? %>
     </div>
 
     <p>

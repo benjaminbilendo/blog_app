@@ -15,7 +15,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-default">
-            <div class="panel-body text-center"><%= image_tag(@blog.image_url(:thumb), alt: 'Image') if @blog.image? %>
+            <div class="panel-body text-center"><%= image_tag(@blog.image_url(:medium), alt: 'Image') if @blog.image? %>
                 <h4>Your Story</h4>
             </div>
         </div>
@@ -49,7 +49,6 @@
         </table>
     </div>
 </div>
-
     <%= link_to 'Edit', edit_backend_blog_path(@blog) %>
     <%= link_to 'Back', backend_blogs_path %>
 </div>

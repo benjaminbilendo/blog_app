@@ -7,34 +7,45 @@
     <img src="<%= asset_path( 'welcome_burned.png' ) %>" />
 </div>
 
+<%= link_to 'recreate images', recreate_images_path, method: :put %>
+
 <div class="table-responsive">
     <table class="table table-hover text-center">
         <thead>
             <tr>
-                <th>Published</th>
-                <th>Title</th>
-                <th>Text</th>
-                <th>Picture</th>
-                <th>Actions</th>
+                <th class="text-center">Published</th>
+                <th class="text-center">Title</th>
+                <th class="text-center">Text</th>
+                <th class="text-center">Picture</th>
+                <th class="text-center">WordCount</th>
+                <th class="text-center">WhitespaceCount</th>
+                <th class="text-center">CharacterCount</th>
+                <th class="text-center">Actions</th>
             </tr>
         </thead>
+
         <% @blogs.each do |blog| %>
             <tr>
-                <td><%= blog.active %></td>
-                <td><%= blog.title %></td>
-                <td><%= blog.text %></td>
-                <td><%= image_tag(blog.image_url(:thumb), alt: 'Image') if blog.image? %></td>
-                <td>
-               <%= link_to 'Edit', edit_backend_blog_path(blog), class: 'btn btn-info' %>
+                <td class="text-center"><%= blog.active %></td>
+                <td class="text-center"><%= blog.title %></td>
+                <td class="text-center"><%= blog.text %></td>
+                <td class="text-center"><%= image_tag(blog.image_url(:medium), alt: 'Image') if blog.image? %></td>
+                <td class="text-center"><%= blog.wordcount %></td>
+                <td class="text-center"><%= blog.whitespacecount %></td>
+                <td class="text-center"><%= blog.charactercount %></td>
+               <td><%= link_to 'Edit', edit_backend_blog_path(blog), class: 'btn btn-info' %>
                <%= link_to 'Delete', backend_blog_path(blog), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
             </tr>
         <% end %>
     </table>
 
-    <div class="linktonewblog">
-        <%= link_to 'New Blog', new_backend_blog_path, class: 'btn btn-success' %>
-    </div>
 
+<div class="row">
+    <div class="col-md-12 text-center">
+        <div class="new-blog">
+        <%= link_to 'New Blog', new_backend_blog_path, class: 'btn btn-success' %>
+        </div>
+    </div>
 </div>
 
 <%= will_paginate @blogs %>

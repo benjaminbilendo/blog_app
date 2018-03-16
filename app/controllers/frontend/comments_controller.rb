@@ -12,13 +12,6 @@ module Frontend
             end
         end
 
-
-        def show
-           @blog = Blog.find(params[:id])
-           @comment = @blog.comments.new
-        end
-
-
         private
 
         def comment_params

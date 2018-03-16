@@ -32,33 +32,28 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+# Adds support for Capybara system testing and selenium driver
+# gem 'dontenv-rails'
+gem 'capybara', '~> 2.13'
+gem 'selenium-webdriver'
+# gem 'devise-bootstrap-views'
 
-group :development, :test, :production do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  # Adds support for Capybara system testing and selenium driver
-  # gem 'dontenv-rails'
-  gem 'capybara', '~> 2.13'
-  gem 'selenium-webdriver'
-  gem 'devise-bootstrap-views'
-  gem 'cancancan', '~> 2.0'
-  gem 'rolify'
-  gem 'devise'
-  gem 'resque'
-  gem 'redis'
-  gem 'resque-web', require: 'resque_web'
-  gem 'resque_mailer'
-  gem 'sass-rails', '>= 3.2'
-  gem 'autoprefixer-rails'
-  gem 'carrierwave', '~> 1.0'
-  gem 'mini_magick'
-  gem 'friendly_id', '~> 5.2.1'
-  gem 'will_paginate', '~> 3.1.0'
-  gem "paperclip", "~> 5.2.1"
-  gem 'simple_form'
-  gem 'gaffe'
-
-end
+# gem 'devise'
+gem 'resque'
+gem 'redis'
+gem 'resque-web', require: 'resque_web'
+gem 'resque_mailer'
+gem 'sass-rails', '>= 3.2'
+gem 'autoprefixer-rails'
+gem 'carrierwave', '~> 1.0'
+gem 'mini_magick'
+gem 'friendly_id', '~> 5.2.1'
+gem 'will_paginate', '~> 3.1.0'
+gem "paperclip", "~> 5.2.1"
+gem 'simple_form'
+gem 'gaffe'
+gem 'foreman'
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.

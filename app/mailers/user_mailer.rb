@@ -1,10 +1,11 @@
 class UserMailer < ApplicationMailer
 
-
     include Resque::Mailer
 
-    def welcome_email
-        @emails = Subscription.all.collect(&:email).join(", ")
-        mail(to: @emails, subject: "Thanks for subscribing")
+    def new_post(blog_id, subscription_id)
+        @blog = Blog.find(blog_id)
+        @subscription = Subscription.find(subscription_id)
+
+        mail(to: @subscription.email, subject: "See my new post: #{@blog.title}")
     end
 end
